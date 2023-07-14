@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const app = express()
 app.use(express.urlencoded({extended:true}));   
 
-const url = "mongodb+srv://amrg_5612:Mongo_5612@botathon.8ytyjss.mongodb.net/Healthcare?retryWrites=true&w=majority";
+const url = "mongodb+srv://chatbotmira0:Mira_1207@malldetails.3miwqu3.mongodb.net/";
 
 mongoose.connect(url,{useNewUrlParser: true,useUnifiedTopology: true})
 .then((res)=>{

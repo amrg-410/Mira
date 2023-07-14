@@ -15,7 +15,7 @@ const  schema= mongoose.Schema({
     },
     passwordHash:{
         type:String,
-        select: false //this field will not be returned in response to client request as it is sensitive
+        select: false 
     },
 
 },{versionKey:false})

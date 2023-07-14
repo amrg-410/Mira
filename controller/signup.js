@@ -61,11 +61,13 @@ route.post('/checkOtp',(req,res)=>{
     }
 })
 
+
 route.post('/insert',(req,res)=>{
     console.log(req.body)
     user.create(req.body)
     res.send('user created')
 })
+
 
 
 module.exports=route
