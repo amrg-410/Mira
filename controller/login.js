@@ -7,7 +7,6 @@ const path = require("path")
 const crypto = require('crypto');
 const emailTemplateSource = fs.readFileSync(path.join(__dirname, "/tempOtp.hbs"), "utf8") 
 
-
 let transporter = {
     service: 'gmail',
     auth: {
@@ -30,7 +29,26 @@ function generateOTP() {
 }
 
 
-route.post("/sendOtpMail", (req, res) => {
+route.post('/login', async (req, res) => {
+  console.log(req.body);
+  user.findOne({emailId : req.body.emailId})
+  .then((result)=>{
+    console.log(result)
+    if(result.password === req.body.password){
+        res.sendStatus(200)
+    }
+    else{
+        res.sendStatus(401)
+    }   
+  })
+  .catch(err=>{
+    console.log(err)
+    res.sendStatus(404)
+  })
+});
+
+
+route.post("/forgotPassMail", (req, res) => {
     console.log(req.body);
     const otp = generateOTP();
     console.log(otp);
@@ -38,7 +56,7 @@ route.post("/sendOtpMail", (req, res) => {
     const mailOptions = {
         from: 'chatbotmira0@gmail.com',
         to: req.body.emailId,
-        subject: 'OTP for Signup Verification',
+        subject: 'OTP Verification to Change Password',
         html: htmlToSend
     };
     smtpTransport.sendMail(mailOptions)
@@ -51,14 +69,5 @@ route.post("/sendOtpMail", (req, res) => {
             res.sendStatus(400);
         });
 });
-
-
-route.post('/insert', async (req, res) => {
-  console.log(req.body);
-  user.create(req.body);
-  res.send("User Created");
-});
-
-
 
 module.exports=route

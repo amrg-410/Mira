@@ -19,6 +19,11 @@ const signup=require('./controller/signup')
 app.use(signup)
 
 
+//route  to Login  
+const login=require('./controller/login')
+app.use(login)
+
+
 app.get('/',(req,res)=>{
     res.send("YES")
 })
