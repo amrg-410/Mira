@@ -22,6 +22,6 @@ const  schema= mongoose.Schema({
 
 
 
-const  model=mongoose.model('customer',schema)
+const  customer=mongoose.model('customer',schema)
 
-module.exports=model
+module.exports=customer

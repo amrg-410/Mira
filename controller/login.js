@@ -4,7 +4,7 @@ const nodemailer=require("nodemailer")
 const handlebars = require("handlebars")
 const fs = require("fs")
 const path = require("path")
-const crypto = require('crypto');
+const generateOTP = require('./otpGenerator');
 const emailTemplateSource = fs.readFileSync(path.join(__dirname, "/tempOtp.hbs"), "utf8") 
 
 let transporter = {
@@ -17,16 +17,6 @@ let transporter = {
 
 const smtpTransport = nodemailer.createTransport(transporter)
 const template = handlebars.compile(emailTemplateSource)
-
-
-function generateOTP() {  
-    var digits = '0123456789';
-    let OTP = '';
-    for (let i = 0; i < 6; i++ ) {
-        OTP += digits[Math.floor(Math.random() * 10)];
-    }
-    return OTP;
-}
 
 
 route.post('/login', async (req, res) => {
