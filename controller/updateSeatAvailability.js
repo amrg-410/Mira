@@ -1,7 +1,7 @@
 const Movie = require('../model/movie')
 
-const makeBookingAndUpdateSeatAvailability = (movieId, showDate, showTime) => {
-  Movie.findById(movieId)
+const updateSeats = (title, showDate, showTime) => {
+  Movie.findOne({title:title,showDate:showDate})
     .then((bookedMovie) => {
       if (!bookedMovie) {
         console.log('Movie not found.');

@@ -19,7 +19,7 @@ const smtpTransport = nodemailer.createTransport(transporter)
 const template = handlebars.compile(emailTemplateSource)
 
 
-route.post('/login', async (req, res) => {
+route.post('/login', (req, res) => {
   console.log(req.body);
   user.findOne({emailId : req.body.emailId})
   .then((result)=>{
