@@ -6,6 +6,7 @@ const moment = require('moment');
 route.post('/showTimings', (req, res) => {
   console.log(req.body);
   const { title, showDate } = req.body;
+  console.log(title,showDate);
   show.find({
     title: title,
     showDate: showDate
@@ -19,9 +20,13 @@ route.post('/showTimings', (req, res) => {
         const givenDateTime = moment(show.showTimes, 'hh:mm A', true);
         return givenDateTime.isAfter(currentTime);
       });
-
-      console.log("filteredShows", filteredShows);
-      res.json(filteredShows);
+      if(filteredShows.length == 0){
+          res.sendStatus(404);
+      }
+      else{
+        console.log("filteredShows", filteredShows);
+        res.json(filteredShows);
+      }
     } else {
       res.json(shows);
     }
@@ -31,12 +36,6 @@ route.post('/showTimings', (req, res) => {
     res.sendStatus(404);
   });
 });
-
-
-
-
-
-
 
 
 module.exports = route;

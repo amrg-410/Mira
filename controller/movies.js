@@ -61,4 +61,18 @@ route.get('/saveTimings',()=>{
 })
 
 
+route.post('/fetchMovies', (req, res) => {
+  console.log("fetchMovies");
+
+  movie.find()
+    .then((movies) => {
+      res.json(movies);
+    })
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(404);
+    });
+});
+
+
 module.exports=route
