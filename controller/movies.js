@@ -114,6 +114,70 @@ route.get('/saveTimings',()=>{
           showTimes: "01:30 PM",
           ticketPrice: "$20",
           seatAvailability:  30 ,
+        },
+        {
+          title: "Oppenheimer",
+          theater: "AMC Empire 25",
+          showDate: new Date("2023-07-26"),
+          showTimes: "10:00 AM",
+          ticketPrice: "$14",
+          seatAvailability:  30 
+        },
+        {
+          title: "Barbie",
+          theater: "AMC Empire 25",
+          showDate: new Date("2023-07-26"),
+          showTimes: "02:00 PM",
+          ticketPrice: "$14",
+          seatAvailability:  30 ,
+        },
+        {
+          title: "Blue Beetle",
+          theater: "AMC Empire 25",
+          showDate: new Date("2023-07-26"),
+          showTimes: "04:30 PM",
+          ticketPrice: "$14",
+          seatAvailability:  30 ,
+        },
+        {
+          title: "Go West",
+          theater: "AMC Empire 25",
+          showDate: new Date("2023-07-26"),
+          showTimes: "08:00 PM",
+          ticketPrice: "$14",
+          seatAvailability:  30 ,
+        },
+        {
+          title: "Oppenheimer",
+          theater: "Times Square Theater",
+          showDate: new Date("2023-07-26"),
+          showTimes: "03:30 PM",
+          ticketPrice: "$20",
+          seatAvailability:  30 
+        },
+        {
+          title: "Barbie",
+          theater: "Times Square Theater",
+          showDate: new Date("2023-07-26"),
+          showTimes: "07:30 PM",
+          ticketPrice: "$20",
+          seatAvailability:  30 ,
+        },
+        {
+          title: "Blue Beetle",
+          theater: "Times Square Theater",
+          showDate: new Date("2023-07-26"),
+          showTimes: "10:00 AM",
+          ticketPrice: "$20",
+          seatAvailability:  30 ,
+        },
+        {
+          title: "Go West",
+          theater: "Times Square Theater",
+          showDate: new Date("2023-07-26"),
+          showTimes: "01:30 PM",
+          ticketPrice: "$20",
+          seatAvailability:  30 ,
         }
       ];
       show.insertMany(sampleMovieData)
