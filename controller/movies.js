@@ -6,21 +6,38 @@ const show = require('../model/shows')
 route.get('/saveMovie',()=>{
     const sampleMovieData = [
         {
-          title: "Movie 1",
+          title: "Oppenheimer",
           language: "English",
-          movieDuration: "2h 15m",
-          ageRestrictions: "PG-13",
-          moviePoster: "poster1.jpg",
-          additionalInfo: "Some additional information about Movie 1",
+          movieDuration: "3h 10m",
+          ageRestrictions: "R",
+          moviePoster: "https://github.com/balajisadhasivam/Mira/blob/main/Oppenheimer.jpg",
+          additionalInfo: "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.",
         },
         {
-          title: "Movie 1",
+          title: "Barbie",
           language: "English",
-          movieDuration: "2h 15m",
+          movieDuration: "1h 54m",
           ageRestrictions: "PG-13",
-          moviePoster: "poster1.jpg",
-          additionalInfo: "Some additional information about Movie 1",
+          moviePoster: "https://github.com/balajisadhasivam/Mira/blob/main/Barbie.jpg",
+          additionalInfo: "Barbie suffers a crisis that leads her to question her world and her existence.",
         },
+        {
+          title: "Blue Beetle",
+          language: "English",
+          movieDuration: "2h 7m",
+          ageRestrictions: "PG-13",
+          moviePoster: "https://github.com/balajisadhasivam/Mira/blob/main/Blue%20Beetle.jpg",
+          additionalInfo: "An alien relic chooses Jaime Reyes to be its symbiotic host, bestowing the teenager with a suit of armor that's capable of extraordinary and unpredictable powers, forever changing his destiny as he becomes the superhero Blue Beetle.",
+        },
+        {
+          title: "Go West",
+          language: "English",
+          movieDuration: "1h 30m",
+          ageRestrictions: "PG-13",
+          moviePoster: "https://github.com/balajisadhasivam/Mira/blob/main/Go%20west.jpg",
+          additionalInfo: "A crazy group of pioneers brave the harsh elements and numerous mishaps to travel thousands of miles out west to find a place to call home.",
+        },
+        
       ];
       movie.insertMany(sampleMovieData)
         .then(() => {
@@ -35,21 +52,69 @@ route.get('/saveMovie',()=>{
 route.get('/saveTimings',()=>{
     const sampleMovieData = [
         {
-          title: "Movie 1",
-          theater: "Theater A",
-          showDate: new Date("2023-07-20"),
+          title: "Oppenheimer",
+          theater: "AMC Empire 25",
+          showDate: new Date("2023-07-25"),
           showTimes: "10:00 AM",
-          ticketPrice: 10,
+          ticketPrice: "$14",
           seatAvailability:  30 
         },
         {
-          title: "Movie 1",
-          theater: "Theater B",
-          showDate: new Date("2023-07-20"),
-          showTimes: "10:00 PM",
-          ticketPrice: 10,
+          title: "Barbie",
+          theater: "AMC Empire 25",
+          showDate: new Date("2023-07-25"),
+          showTimes: "02:00 PM",
+          ticketPrice: "$14",
           seatAvailability:  30 ,
         },
+        {
+          title: "Blue Beetle",
+          theater: "AMC Empire 25",
+          showDate: new Date("2023-07-25"),
+          showTimes: "04:30 PM",
+          ticketPrice: "$14",
+          seatAvailability:  30 ,
+        },
+        {
+          title: "Go West",
+          theater: "AMC Empire 25",
+          showDate: new Date("2023-07-25"),
+          showTimes: "08:00 PM",
+          ticketPrice: "$14",
+          seatAvailability:  30 ,
+        },
+        {
+          title: "Oppenheimer",
+          theater: "Times Square Theater",
+          showDate: new Date("2023-07-25"),
+          showTimes: "03:30 PM",
+          ticketPrice: "$20",
+          seatAvailability:  30 
+        },
+        {
+          title: "Barbie",
+          theater: "Times Square Theater",
+          showDate: new Date("2023-07-25"),
+          showTimes: "07:30 PM",
+          ticketPrice: "$20",
+          seatAvailability:  30 ,
+        },
+        {
+          title: "Blue Beetle",
+          theater: "Times Square Theater",
+          showDate: new Date("2023-07-25"),
+          showTimes: "10:00 AM",
+          ticketPrice: "$20",
+          seatAvailability:  30 ,
+        },
+        {
+          title: "Go West",
+          theater: "Times Square Theater",
+          showDate: new Date("2023-07-25"),
+          showTimes: "01:30 PM",
+          ticketPrice: "$20",
+          seatAvailability:  30 ,
+        }
       ];
       show.insertMany(sampleMovieData)
         .then(() => {
