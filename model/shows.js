@@ -5,7 +5,7 @@ const movieSchema = new mongoose.Schema({
   theater: { type: String, required: true },
   showDate: { type: Date, required: true },
   showTimes: { type: String, required: true },
-  ticketPrice: { type: Number, required: true },
+  ticketPrice: { type: String, required: true },
   seatAvailability: { type: Number, required: true },
 });
 
