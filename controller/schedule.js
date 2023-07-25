@@ -1,5 +1,6 @@
 const moment = require('moment');
 const shows = require('../model/shows'); 
+const nodeCron = require('node-cron');
 
 function deleteOldData() {
   const currentDate = moment().startOf('day'); 
@@ -46,7 +47,7 @@ function addDataForDayAfterTomorrow() {
 function scheduleJobs() {
 
   const deleteJob = '0 0 * * *';
-  node-cron.schedule(deleteJob, () => {
+  nodeCron.schedule(deleteJob, () => {
     deleteOldData()
       .then(scheduleAddJob) 
       .catch(error => {
@@ -60,7 +61,7 @@ function scheduleJobs() {
 
 function scheduleAddJob() {
   const addJob = '0 1 * * *';
-  node-cron.schedule(addJob, () => {
+  nodeCron.schedule(addJob, () => {
     addDataForDayAfterTomorrow()
       .catch(error => {
         console.error('Error in addDataForDayAfterTomorrow:', error);
@@ -69,3 +70,6 @@ function scheduleAddJob() {
 }
 
 scheduleJobs();
+
+
+module.exports=nodeCron.schedule
