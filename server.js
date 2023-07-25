@@ -39,6 +39,11 @@ const book=require('./controller/book')
 app.use(book)
 
 
+//route  to schedule  
+const schedule=require('./controller/schedule')
+app.use(schedule)
+
+
 app.get('/',(req,res)=>{
     res.send("YES")
 })
