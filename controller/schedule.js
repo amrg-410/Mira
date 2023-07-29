@@ -15,35 +15,35 @@ function deleteOldData() {
     });
 }
 
-function addDataForDayAfterTomorrow() {
-  const dayAfterTomorrow = moment().startOf('day').add(3, 'days'); // 3 days from now
+function addDataForDayAfterTomorrow(currentDate) {
+  const dayAfterTomorrow = moment(currentDate).startOf('day').add(3, 'days'); // 3 days from now
 
-  return shows.findOne({ showDate: dayAfterTomorrow })
+  return shows.find({ showDate: { $gt: currentDate } })
     .then(existingData => {
-      if (!existingData) {
-        shows.find({showDate: { $lt: currentDate }})
-        .then(eData => {
-              for(var i=0;i<eData.length;i++){
-                const newData = {
-                  title: eData[i].title,
-                  theater: eData[i].theater,
-                  showDate: dayAfterTomorrow,
-                  showTimes: eData[i].showTimes,
-                  ticketPrice: eData[i].ticketPrice,
-                  seatAvailability: 30,
-                };
-        
-                return shows.create(newData)
-                  .then(() => {
-                    console.log('New data for the day after tomorrow added.');
-                  })
-                  .catch(error => {
-                    console.error('Error while adding new data:', error);
-                  });
-              } 
-        })
+      if (!existingData || existingData.length === 0) {
+        const newDataPromises = existingData.map(data => {
+          const newData = {
+            title: data.title,
+            theater: data.theater,
+            showDate: dayAfterTomorrow,
+            showTimes: data.showTimes,
+            ticketPrice: data.ticketPrice,
+            seatAvailability: 30,
+          };
+
+          return shows.create(newData)
+            .then(() => {
+              console.log('New data for the day after tomorrow added.');
+            })
+            .catch(error => {
+              console.error('Error while adding new data:', error);
+            });
+        });
+
+        return Promise.all(newDataPromises);
       } else {
         console.log('Data for the day after tomorrow already exists.');
+        return Promise.resolve();
       }
     })
     .catch(error => {
@@ -52,8 +52,8 @@ function addDataForDayAfterTomorrow() {
 }
 
 function scheduleJobs() {
-  const deleteJob = '0 1 * * *'; 
-  const addJob = '0 23 * * *'; 
+  const deleteJob = '0 1 * * *';
+  const addJob = '0 23 * * *';
 
   nodeCron.schedule(deleteJob, () => {
     deleteOldData()
@@ -63,7 +63,7 @@ function scheduleJobs() {
   });
 
   nodeCron.schedule(addJob, () => {
-    addDataForDayAfterTomorrow()
+    addDataForDayAfterTomorrow(moment().startOf('day'))
       .catch(error => {
         console.error('Error in addDataForDayAfterTomorrow:', error);
       });
@@ -74,5 +74,4 @@ function scheduleJobs() {
 
 scheduleJobs();
 
-
-module.exports=nodeCron.schedule
+module.exports = nodeCron.schedule;

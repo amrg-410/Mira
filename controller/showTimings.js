@@ -1,9 +1,8 @@
 const route = require('express').Router()
 const show = require('../model/shows')
-const moment = require('moment'); 
 
 
-route.post('/showTimings', (req, res) => {
+route.post("/showTimings", (req, res) => {
   console.log(req.body);
   const { title, showDate } = req.body;
   console.log(title,showDate);
