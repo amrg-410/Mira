@@ -17,8 +17,10 @@ route.post('/showTimings', (req, res) => {
       console.log(shows);
       const currentTime = moment();
       const filteredShows = shows.filter((show) => {
-        const givenDateTime = moment(show.showTimes, 'hh:mm A', true);
-        return givenDateTime.isAfter(currentTime);
+          for(var i=0;i<shows.length;i++){
+            const givenDateTime = moment(show[i].showTimes, 'hh:mm A', true);
+            return givenDateTime.isAfter(currentTime);
+          }
       });
       if(filteredShows.length == 0){
           res.sendStatus(404);
