@@ -6,7 +6,7 @@ function deleteOldData() {
   const currentDate = moment().startOf('day');
   const previousDate = moment(currentDate).subtract(1, 'days');
 
-  return shows.deleteMany({ showDate: { $lt: previousDate.toDate() } })
+  return shows.deleteMany({ showDate: { $lt: previousDate } })
     .then(() => {
       console.log('Data with showDate less than current date deleted.');
     })
@@ -18,16 +18,16 @@ function deleteOldData() {
 function addDataForDayAfterTomorrow() {
   const dayAfterTomorrow = moment().startOf('day').add(3, 'days'); // 3 days from now
 
-  return shows.findOne({ showDate: dayAfterTomorrow.toDate() })
+  return shows.findOne({ showDate: dayAfterTomorrow })
     .then(existingData => {
       if (!existingData) {
-        shows.find({showDate: { $lt: currentDate.toDate() }})
+        shows.find({showDate: { $lt: currentDate }})
         .then(eData => {
               for(var i=0;i<eData.length;i++){
                 const newData = {
                   title: eData[i].title,
                   theater: eData[i].theater,
-                  showDate: dayAfterTomorrow.toDate(),
+                  showDate: dayAfterTomorrow,
                   showTimes: eData[i].showTimes,
                   ticketPrice: eData[i].ticketPrice,
                   seatAvailability: 30,
