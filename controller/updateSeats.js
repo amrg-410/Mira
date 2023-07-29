@@ -15,6 +15,7 @@ route.post('/updateSeats',(req,res)=>{
   .then((seats)=>{
       seats.seatAvailability -= seatAvailability;
       seats.save();
+      res.sendStatus(200);
   })
 })
 
