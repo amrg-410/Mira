@@ -16,14 +16,16 @@ route.post('/showTimings', (req, res) => {
     .then((shows) => {
       console.log(shows);
       const currentTime = moment();
+
       const filteredShows = shows.map((show) => {
         const givenDateTime = moment(show.showTimes, 'hh:mm A', true);
         return {
           ...show,
-          showTimes: givenDateTime.isAfter(currentTime) ? show.showTimes : null
+          showTimes: givenDateTime
         };
       });
-      const validShows = filteredShows.filter(show => show.showTimes !== null);
+
+      const validShows = filteredShows.filter(show => show.showTimes.isAfter(currentTime));
 
       if (validShows.length === 0) {
         res.sendStatus(404);
