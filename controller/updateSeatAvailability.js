@@ -1,32 +1,22 @@
-const Movie = require('../model/movie')
+const shows = require('../model/shows')
+const route = require('express').Router()
 
-const updateSeats = (title, showDate, showTime) => {
-  Movie.findOne({title:title,showDate:showDate})
-    .then((bookedMovie) => {
-      if (!bookedMovie) {
-        console.log('Movie not found.');
-        return;
-      }
-      const bookedShow = bookedMovie.seat_availability.find(show =>
-        show.show_time === showTime && show.show_date.toISOString() === showDate.toISOString()
-      );
-      if (!bookedShow) {
-        console.log('Show time not found for this movie and date.');
-        return;
-      }
-      if (bookedShow.available_seats > 0) {
-        bookedShow.available_seats--;
-        return bookedMovie.save();
-      } 
-      else {
-        console.log('No available seats for this show time and date.');
-        return Promise.resolve();
-      }
-    })
-    .then(() => {
-      console.log('Booking successful. Seat availability updated.');
-    })
-    .catch((error) => {
-      console.error('Error making booking and updating seat availability:', error);
-    });
-};
+
+route.post('/updateSeats',(req,res)=>{
+  const {title,showDate,theater,seatAvailability} = req.body;
+  console.log(req.body);
+  shows.findOne(
+    {
+      title: title,
+      showDate: showDate,
+      theater : theater
+    }
+  )
+  .then((seats)=>{
+      seats.seatAvailability -= seatAvailability;
+      seats.save();
+  })
+})
+
+
+module.exports = route
