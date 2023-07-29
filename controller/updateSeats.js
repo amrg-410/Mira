@@ -17,6 +17,10 @@ route.post("/updateSeats",(req,res)=>{
       seats.save();
       res.sendStatus(200);
   })
+  .catch(err => {
+    console.log(err);
+    res.sendStatus(404);
+  });
 })
 
 
