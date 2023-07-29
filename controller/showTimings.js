@@ -29,7 +29,7 @@ route.post('/showTimings', (req, res) => {
         res.sendStatus(404);
       } else {
         console.log("filteredShows", validShows);
-        res.json(validShows);
+        res.send(validShows);
       }
       })
       .catch(err => {
@@ -39,7 +39,7 @@ route.post('/showTimings', (req, res) => {
   } else {
     let errorObj = {};
     errorObj['error'] = "Invalid date";
-    res.status(503).json(errorObj);
+    res.sendStatus(503).send(errorObj);
   }
 });
 
