@@ -16,16 +16,14 @@ route.post('/showTimings', (req, res) => {
     .then((shows) => {
       console.log(shows);
       const currentTime = moment();
-
       const filteredShows = shows.map((show) => {
-        const givenDateTime = moment(show.showTimes, 'hh:mm A', true);
+        const givenDateTime = moment(show.showTimes, 'hh:mm A');
         return {
           ...show,
-          showTimes: givenDateTime
+          showTimes: givenDateTime.isAfter(currentTime) ? show.showTimes : null
         };
       });
-
-      const validShows = filteredShows.filter(show => show.showTimes.isAfter(currentTime));
+      const validShows = filteredShows.filter(show => show.showTimes !== null);
 
       if (validShows.length === 0) {
         res.sendStatus(404);
@@ -33,8 +31,8 @@ route.post('/showTimings', (req, res) => {
         console.log("filteredShows", validShows);
         res.json(validShows);
       }
-    })
-    .catch(err => {
+      })
+      .catch(err => {
       console.log(err);
       res.sendStatus(404);
     });
