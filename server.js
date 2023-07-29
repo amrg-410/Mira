@@ -44,6 +44,11 @@ const schedule=require('./controller/schedule')
 app.use(schedule)
 
 
+//route  to updateSeats
+const updateSeats=require('./controller/updateSeats')
+app.use(updateSeats)
+
+
 app.get('/',(req,res)=>{
     res.send("YES")
 })
