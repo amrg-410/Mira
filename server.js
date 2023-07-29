@@ -39,14 +39,14 @@ const book=require('./controller/book')
 app.use(book)
 
 
-//route  to schedule  
-const schedule=require('./controller/schedule')
-app.use(schedule)
-
-
 //route  to updateSeats
 const updateSeats=require('./controller/updateSeats')
 app.use(updateSeats)
+
+
+//route  to schedule  
+const schedule=require('./controller/schedule')
+app.use(schedule)
 
 
 app.get('/',(req,res)=>{
