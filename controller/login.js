@@ -42,14 +42,18 @@ route.post("/forgotPassMail", (req, res) => {
     console.log(req.body);
     const otp = generateOTP();
     console.log(otp);
-    const htmlToSend = template({ name: req.body.name, otp: otp });
-    const mailOptions = {
-        from: 'chatbotmira0@gmail.com',
-        to: req.body.emailId,
-        subject: 'OTP Verification to Change Password',
-        html: htmlToSend
-    };
-    smtpTransport.sendMail(mailOptions)
+    user.findOne({
+        emailId: req.body.emailId
+    })
+    .then((result)=>{
+        const htmlToSend = template({ name: result.name, otp: otp });
+        const mailOptions = {
+            from: 'chatbotmira0@gmail.com',
+            to: req.body.emailId,
+            subject: 'OTP Verification to Change Password',
+            html: htmlToSend
+        };
+        smtpTransport.sendMail(mailOptions)
         .then((info) => {
             res.send(otp);
         })
@@ -58,6 +62,29 @@ route.post("/forgotPassMail", (req, res) => {
             console.log(err);
             res.sendStatus(400);
         });
+    })
+    .catch((err) => {
+        console.log(err);
+        res.sendStatus(400);
+    });
 });
+
+
+route.post("/changePassword",(req,res)=>{
+    console.log(req.body);
+    user.findOne({
+        emailId: req.body.emailId
+    })
+    .then((result)=>{
+        result.password = req.body.password;
+        result.save();
+        res.sendStatus(200);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.sendStatus(400);
+    });
+})
+
 
 module.exports=route
