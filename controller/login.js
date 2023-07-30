@@ -25,15 +25,15 @@ route.post('/login', (req, res) => {
   .then((result)=>{
     console.log(result)
     if(result.password === req.body.password){
-        res.sendStatus(200)
+        res.send(result);
     }
     else{
-        res.sendStatus(401)
+        res.sendStatus(401);
     }   
   })
   .catch(err=>{
-    console.log(err)
-    res.sendStatus(404)
+    console.log(err);
+    res.sendStatus(404);
   })
 });
 
