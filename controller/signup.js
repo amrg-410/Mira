@@ -44,7 +44,7 @@ route.post("/sendOtpMail", (req, res) => {
 });
 
 
-route.post('/insert', async (req, res) => {
+route.post('/insert', (req, res) => {
   console.log(req.body);
   user.create(req.body);
   res.send("User Created");
