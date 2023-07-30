@@ -9,22 +9,20 @@ const generateBookingId = () => {
 };
 
 route.post('/book', (req, res) => {
-  const { title, showDate, showTime, seats, user } = req.body;
+  const { title, showDate, theater, showTime, seats, user } = req.body;
+  console.log(req.body);
   const bookingId = generateBookingId();
-
   const newBooking = new Booking({
     bookingId,
     title,
     showDate,
+    theater,
     showTime,
     seats,
     user
   });
 
   newBooking.save()
-    .then(() => {
-      return updateSeats(title, showDate, showTime);
-    })
     .then(() => {
       res.json({ message: 'Booking successful.', bookingId }); 
     })
