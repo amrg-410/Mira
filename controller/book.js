@@ -32,4 +32,18 @@ route.post('/book', (req, res) => {
     });
 });
 
+
+route.post("/fetchBooking",(req,res)=>{
+    Booking.find({user:req.body.emailId})
+    .then((book)=>{
+      if(!book){
+        res.sendStatus(404) ;
+      }
+      else{
+        res.send(book);
+      }
+    })
+})
+
+
 module.exports = route;
