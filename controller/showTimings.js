@@ -45,9 +45,9 @@ route.post("/showTimings", (req, res) => {
             const isPassed = isTimePassed(givenTime);
             
             if (isPassed) {
-               responseData+=shows[i];
+               console.log("Show is in past");
             } else {
-              console.log(`${givenTime} is yet to come.`);
+              responseData+=shows[i];
             }
           }
           if(responseData.length === 0){
