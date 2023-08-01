@@ -15,7 +15,7 @@ route.post("/showTimings", (req, res) => {
           res.sendStatus(404);
        }
        else{
-        let responseData={};
+        let responseData=[];
           for(var i=0;i<shows.length;i++){
             function getCurrentTimeInAMPM() {
               const date = new Date();
