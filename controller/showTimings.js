@@ -50,6 +50,12 @@ route.post("/showTimings", (req, res) => {
               console.log(`${givenTime} is yet to come.`);
             }
           }
+          if(responseData.length === 0){
+            res.status(503).json({message: "No Show Found"});
+          }
+          else{
+            res.send(responseData);
+          }
        }
   })
   .catch(err => {
