@@ -47,14 +47,14 @@ route.post("/showTimings", (req, res) => {
             if (isPassed) {
                console.log("Show is in past");
             } else {
-              responseData+=shows[i];
+              responseData.push(shows[i]);
             }
           }
           if(responseData.length === 0){
             res.status(503).json({message: "No Show Found"});
           }
           else{
-            res.json(responseData);
+            res.send(responseData);
           }
        }
   })
