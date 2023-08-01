@@ -54,7 +54,7 @@ route.post("/showTimings", (req, res) => {
             res.status(503).json({message: "No Show Found"});
           }
           else{
-            res.send(responseData);
+            res.json(responseData);
           }
        }
   })
