@@ -9,7 +9,7 @@ const generateBookingId = () => {
 };
 
 route.post('/book', (req, res) => {
-  const { title, showDate, theater, showTime, seats, user } = req.body;
+  const { title, showDate, theater, showTime, seats, user, paymentId } = req.body;
   console.log(req.body);
   const bookingId = generateBookingId();
   const newBooking = new Booking({
