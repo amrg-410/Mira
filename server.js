@@ -44,6 +44,11 @@ const updateSeats=require('./controller/updateSeats')
 app.use(updateSeats)
 
 
+//route  to payment
+const payment=require('./controller/payment')
+app.use(payment)
+
+
 //route  to schedule  
 // const schedule=require('./controller/schedule')
 // app.use(schedule)
