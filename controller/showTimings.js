@@ -1,6 +1,8 @@
 const route = require('express').Router()
 const show = require('../model/shows')
 const isTimePassed = require('./isTimePassed')
+const getCurrentDate = require('./getCurrentDate')
+
 
 route.post("/showTimings", (req, res) => {
   console.log(req.body);
