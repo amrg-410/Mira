@@ -16,14 +16,18 @@ route.post("/showTimings", (req, res) => {
        }
        else{
         let responseData=[];
+        const currentDate = getCurrentDate();
+        console.log(currentDate);
           for(var i=0;i<shows.length;i++){
-            const givenTime = shows[i].showTimes;
-            const isPassed = isTimePassed(givenTime);
-            if (isPassed) {
-               console.log("Show is in past");
-            } else {
-              responseData.push(shows[i]);
+            if(shows[i].showDate === currentDate){
+              const givenTime = shows[i].showTimes;
+              const isPassed = isTimePassed(givenTime);
+              if (isPassed) {
+                console.log("Show is in past");
+                continue;
+              } 
             }
+            responseData.push(shows[i]);
           }
           if(responseData.length === 0){
             res.status(503).json({message: "No Show Found"});
