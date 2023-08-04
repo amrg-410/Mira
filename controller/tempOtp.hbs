@@ -43,14 +43,16 @@
 
         .otp {
             text-align: center;
-            color: rgb(210, 41, 145);
+            color: #F09895;
             margin-top: 20px;
+            margin-right: 10px;
         }
 
         .gg1 {
             text-align: left;
             color: rgb(0, 0, 0);
             margin-top: 20px;
+            font-size: 15px;
         }
 
         table,
@@ -68,7 +70,6 @@
             border-radius: 10px;
             border-style: double;
         }
-
         @media (max-width: 768px) {
             .card {
                 max-width: 90%;
@@ -78,43 +79,37 @@
                 width: 80px;
                 height: 80px;
             }
+
+            .gg1 {
+                text-align: center;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="card">
-
-        <img src="https://template.preview.drcstudio.co.in/logo2.png" alt="" width="100px" height="100px"
-            class="center">
-
+        <img src="C:\Users\ASUS\Desktop\Bot\Mira.png" alt="" width="100px" height="100px" class="center">
         <div class="bb">
-            <h1 style="font-family: arial">Anya Healthcare</h1>
+            <h1 style="font-family: arial">Mira</h1>
         </div>
-
         <div class="gg1">
             <h1 style="font-family: arial">Hi <b>{{name}}</b>,</h1>
         </div>
-
         <div class="gg1">
             <p style="font-size: 120%">Enter this code within 5 minutes or go to the login page to resend it.</p>
         </div>
-
         <div class="otp">
             <h1 style="font-family: arial">Your Otp: <b>{{otp}}</b></h1>
         </div>
-
         <div class="gg1">
             <p style="font-size: 120%">If you don't recognize or expect this email, please don't share the above code
-                with anyone.<br>If you did not request this, please contact the healthcare center.</p>
+                with anyone.<br>If you did not request this, please contact the Administrator.</p>
         </div>
-
         <div class="gg1">
             <p style="font-size: 120%">Thanks, <b>{{name}}.</b></p>
         </div>
-
     </div>
-
 </body>
 
 </html>
