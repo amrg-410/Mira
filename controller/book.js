@@ -19,7 +19,8 @@ route.post('/book', (req, res) => {
     theater,
     showTime,
     seats,
-    user
+    user,
+    paymentId
   });
 
   newBooking.save()
