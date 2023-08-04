@@ -1,9 +1,9 @@
 const route = require('express').Router()
 
-route.get('/delay', (req, res) => {
+route.post('/delay', (req, res) => {
     setTimeout(() => {
       res.send('Response after 20 seconds delay');
-    }, 5000); 
+    }, 1000); 
   });
 
 module.exports = route
