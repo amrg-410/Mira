@@ -8,8 +8,8 @@ function isDatePassed(givenDate) {
     else {
       return false;
     }
-  }
+}
 
 
-  module.exports = isDatePassed
+module.exports = isDatePassed
   
