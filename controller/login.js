@@ -46,7 +46,7 @@ route.post("/forgotPassMail", (req, res) => {
         emailId: req.body.emailId
     })
     .then((result)=>{
-        const htmlToSend = template({ name: result.name, otp: otp });
+        const htmlToSend = template({ name: result.fullName, otp: otp });
         const mailOptions = {
             from: 'chatbotmira0@gmail.com',
             to: req.body.emailId,
