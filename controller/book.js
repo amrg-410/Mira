@@ -45,6 +45,7 @@ route.post("/fetchBooking",(req,res)=>{
         res.sendStatus(404) ;
       }
       else{
+        console.log(book)
         let responseData=[];
         const currentDate = getCurrentDate();
         console.log(currentDate);
