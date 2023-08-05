@@ -1,7 +1,8 @@
 const route = require('express').Router()
 const show = require('../model/shows')
 const isTimePassed = require('./isTimePassed')
-const getCurrentDate = require('./getCurrentDate')
+const getCurrentDate = require('./getCurrentDate');
+const isDatePassed = require('./isDatePassed');
 
 
 route.post("/showTimings", (req, res) => {
@@ -28,6 +29,9 @@ route.post("/showTimings", (req, res) => {
                 console.log("Show is in past");
                 continue;
               } 
+            }
+            else if(isDatePassed(shows[i].showDate.split("T")[0])){
+                continue;
             }
             responseData.push(shows[i]);
           }
