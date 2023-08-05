@@ -50,8 +50,7 @@ route.post("/fetchBooking",(req,res)=>{
         const currentDate = getCurrentDate();
         console.log(currentDate);
           for(var i=0;i<book.length;i++){
-            var temp = book[i].showDate
-            if(temp === currentDate){
+            if(book[i].showDate === currentDate){
               const givenTime = book[i].showTimes;
               const isPassed = isTimePassed(givenTime);
               if (isPassed) {
@@ -59,7 +58,7 @@ route.post("/fetchBooking",(req,res)=>{
                 continue;
               } 
             }
-            else if(isDatePassed(temp)){
+            else if(isDatePassed(book[i].showDate)){
               continue;
             }
             responseData.push(book[i]);
