@@ -51,6 +51,7 @@ route.post("/fetchBooking",(req,res)=>{
         console.log(currentDate);
           for(var i=0;i<book.length;i++){
             var temp = book[i].showDate.toString();
+            console.log(temp);
             if(book[i].showDate === currentDate){
               const givenTime = book[i].showTimes;
               const isPassed = isTimePassed(givenTime);
