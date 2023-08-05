@@ -76,4 +76,18 @@ route.post("/fetchBooking",(req,res)=>{
 })
 
 
+route.post('/cancel',(req,res)=>{
+  Booking.deleteOne({
+    bookingId:req.body.bookingId
+  })
+  .then(() => {
+    res.sendStatus(200); 
+  })
+  .catch((error) => {
+    console.error('Error cancel booking:', error);
+    res.status(500).json({ error: 'Cancelling failed.' });
+  });
+})
+
+
 module.exports = route;
