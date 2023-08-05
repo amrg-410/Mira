@@ -22,6 +22,7 @@ route.post("/showTimings", (req, res) => {
         const currentDate = getCurrentDate();
         console.log(currentDate);
           for(var i=0;i<shows.length;i++){
+            var temp = shows[i].showDate.toString();
             if(shows[i].showDate === currentDate){
               const givenTime = shows[i].showTimes;
               const isPassed = isTimePassed(givenTime);
@@ -30,7 +31,7 @@ route.post("/showTimings", (req, res) => {
                 continue;
               } 
             }
-            else if(isDatePassed(shows[i].showDate.split("T")[0])){
+            else if(isDatePassed(temp.split("T")[0])){
                 continue;
             }
             responseData.push(shows[i]);
