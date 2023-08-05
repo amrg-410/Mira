@@ -3,6 +3,7 @@ const Booking = require('../model/booking');
 const isDatePassed = require('./isDatePassed')
 const isTimePassed = require('./isTimePassed')
 const getCurrentDate = require('./getCurrentDate')
+const show = require('../model/shows')
 
 
 
@@ -80,7 +81,15 @@ route.post('/cancel',(req,res)=>{
   Booking.deleteOne({
     bookingId:req.body.bookingId
   })
-  .then(() => {
+  .then((result) => {
+    show.findOne({
+      title: result.title,
+      showDate: result.showDate,
+      showTimes: result.showTime
+    })
+    .then((rlt)=>{
+        rlt.seatAvailability+=result.seats
+    })
     res.sendStatus(200); 
   })
   .catch((error) => {
