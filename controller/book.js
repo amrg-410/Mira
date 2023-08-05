@@ -89,7 +89,12 @@ route.post('/cancel',(req,res)=>{
     })
     .then((rlt)=>{
         rlt.seatAvailability+=result.seats
+        rlt.save()
     })
+    .catch((error) => {
+      console.error('Error updating seats :', error);
+      res.status(500).json({ error: 'Update seats failed.' });
+    });
     res.sendStatus(200); 
   })
   .catch((error) => {
