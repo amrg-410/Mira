@@ -78,7 +78,7 @@ route.post("/fetchBooking",(req,res)=>{
 
 
 route.post('/cancel',(req,res)=>{
-  Booking.deleteOne({
+  Booking.findOneAndDelete({
     bookingId:req.body.bookingId
   })
   .then((result) => {
