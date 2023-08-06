@@ -49,9 +49,9 @@ const payment=require('./controller/payment')
 app.use(payment)
 
 
-//route  to schedule  
-// const schedule=require('./controller/schedule')
-// app.use(schedule)
+// route  to snacks  
+const snacks=require('./controller/snacks')
+app.use(snacks)
 
 
 app.get('/',(req,res)=>{
