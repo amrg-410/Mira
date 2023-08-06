@@ -82,7 +82,7 @@ route.post('/cancel',(req,res)=>{
     bookingId:req.body.bookingId
   })
   .then((result) => {
-    console.log(result);
+    console.log("Result : "+result);
     show.findOne({
       title: result.title,
       showDate: result.showDate,
