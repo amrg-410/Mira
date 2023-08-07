@@ -34,14 +34,13 @@ route.post('/addSeats', (req, res) => {
     if (!bookData) {
       return res.sendStatus(404); 
     }
-
     shows.findOne({
       title: bookData.title,
       showDate: bookData.showDate,
       theater: bookData.theater
     })
     .then((result) => {
-      if (!result) {
+      if (result.length===0) {
         return res.sendStatus(404); 
       }
       console.log("Seat Updating");
