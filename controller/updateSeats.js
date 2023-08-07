@@ -31,7 +31,8 @@ route.post('/addSeats', (req, res) => {
     bookingId: bookingId 
   })
   .then((bookData) => {
-    if (!bookData) {
+    if (bookData.length===0) {
+      console.log("book=0");
       return res.sendStatus(404); 
     }
     shows.findOne({
@@ -41,6 +42,7 @@ route.post('/addSeats', (req, res) => {
     })
     .then((result) => {
       if (result.length===0) {
+        console.log("result=0");
         return res.sendStatus(404); 
       }
       console.log("Seat Updating");
