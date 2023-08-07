@@ -1,4 +1,5 @@
 const shows = require('../model/shows')
+const book = require('../model/booking')
 const route = require('express').Router()
 
 
@@ -25,16 +26,22 @@ route.post("/updateSeats",(req,res)=>{
 
 
 route.post('/addSeats',(req,res)=>{
-  const{title,showDate,theater,seatAvailability}=req.body;
-  shows.findOne({
-    title: title,
-    showDate: showDate,
-    theater: theater
+  book.findOne({
+    bookingId:req.body.bookingId
   })
-  .then((seats)=>{
-      seats.seatAvailability=seats.seatAvailability+parseInt(seatAvailability);
-      seats.save();
-      res.sendStatus(200);
+  .then((books)=>{
+      shows.findOne({
+        title:books.title,
+        showDate: books.showDate,
+        theater: books.theater
+      })
+      .then((result)=>{
+        result.seatAvailability += books.seats
+      })
+      .catch(err => {
+        console.log(err);
+        res.sendStatus(404);
+      });
     })
     .catch(err => {
       console.log(err);

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            background-color: #f3f3f3;
+            font-family: "Open Sans", sans-serif;
+            font-size: 16px;
+        }
+
+        .card {
+            background-color: #fefefe;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .center {
+            display: block;
+            margin: 10px auto;
+        }
+
+        .title {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+        }
+
+        .movie-image {
+            flex: 1;
+            background-color: #f8f8f8;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .movie-image img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .ticket-details {
+            flex: 2;
+            padding: 20px;
+        }
+
+        .ticket-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .ticket-details h2 {
+            color: #333;
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        .ticket-details h3,
+        .ticket-details p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                max-width: 90%;
+            }
+
+            .center {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <img src="C:\Users\ASUS\Desktop\Bot\Mira.png" alt="" width="100px" height="100px" class="center">
+        <h1 class="title">Mira</h1>
+        <h1>Hi <b>Michael</b>,</h1>
+        <p class="content">I hope this email finds you well. We are excited to inform you that your ticket has been booked successfully.<br>Here are the details of your booking:</p>
+
+        <div class="container">
+            <div class="movie-image">
+                <img src="C:\Users\ASUS\Desktop\1.jpg" alt="Movie Image" width="250" height="300">
+            </div>
+            <div class="ticket-details">
+                <div class="ticket-info">
+                    <h2>Booked Ticket</h2>
+                </div>
+                <h3>Movie: Oppenheimer</h3>
+                <h3>Screen: 4</h3>
+                <p>Date: 25-08-2023</p>
+                <p>Show time: 7:00 PM</p>
+                <p>Seat: A1, A2, A3</p>
+                <p>Total: 750/-</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
