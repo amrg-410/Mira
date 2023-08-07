@@ -4,7 +4,23 @@ const isDatePassed = require('./isDatePassed')
 const isTimePassed = require('./isTimePassed')
 const getCurrentDate = require('./getCurrentDate')
 const show = require('../model/shows')
+const nodemailer=require("nodemailer")  
+const handlebars = require("handlebars")
+const fs = require("fs")
+const path = require("path")
+const emailTemplateSource = fs.readFileSync(path.join(__dirname, "/tempTicket.hbs"), "utf8") 
 
+
+let transporter = {
+    service: 'gmail',
+    auth: {
+    user: 'chatbotmira0@gmail.com' , 
+    pass: 'sqnm cylz knbp ukma', 
+    }
+};
+
+const smtpTransport = nodemailer.createTransport(transporter)
+const template = handlebars.compile(emailTemplateSource)
 
 
 const generateBookingId = () => {
@@ -25,7 +41,9 @@ route.post('/book', (req, res) => {
     showTime,
     seats,
     user,
-    paymentId
+    paymentId,
+    moviePoster,
+    amount
   });
 
   newBooking.save()
@@ -90,6 +108,40 @@ route.post('/cancel',(req,res)=>{
     res.status(500).json({ error: 'Cancelling failed.' });
   });
 })
+
+
+route.post("/bookMail", (req, res) => {
+    const bookingId = req.body.bookingId;
+    console.log(req.body);
+    Booking.findOne({bookingId:bookingId})
+    .then((books)=>{
+      const htmlToSend = template({ 
+        img: books.moviePoster, 
+        title: books.title, 
+        theater: books.theater,
+        date: books.showDate,
+        time: books.showTime,
+        seats: books.seats,
+        amount: books.amount
+      });
+      const mailOptions = {
+          from: 'chatbotmira0@gmail.com',
+          to: books.user,
+          subject: 'Booking Details',
+          html: htmlToSend
+      };
+      smtpTransport.sendMail(mailOptions)
+          .then((info) => {
+              res.sendStatus(200);
+          })
+          .catch((err) => {
+              console.log('gmail');
+              console.log(err);
+              res.sendStatus(400);
+          });
+    })
+    
+});
 
 
 module.exports = route;
