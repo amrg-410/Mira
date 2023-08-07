@@ -30,7 +30,7 @@ route.post('/addSeats',(req,res)=>{
     bookingId:req.body.bookingId
   })
   .then((books)=>{
-    req.body(books);
+    console.log(books);
       shows.findOne({
         title:books[0].title,
         showDate: books[0].showDate,
