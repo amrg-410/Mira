@@ -26,7 +26,7 @@ route.post("/updateSeats",(req,res)=>{
 
 
 route.post('/addSeats',(req,res)=>{
-  const bookingId = req.body;
+  const {bookingId} = req.body;
   book.find({
     bookingId:bookingId 
   })
@@ -39,6 +39,8 @@ route.post('/addSeats',(req,res)=>{
       })
       .then((result)=>{
         result.seatAvailability += books[0].seats
+        result.save()
+        res.sendStatus(201)
       })
       .catch(err => {
         console.log(err);
