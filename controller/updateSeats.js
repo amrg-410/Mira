@@ -26,12 +26,13 @@ route.post("/updateSeats",(req,res)=>{
 
 
 route.post('/addSeats', (req, res) => {
-  const { bookingId } = req.body;
+  const { bookingId,user } = req.body;
   book.findOne({
-    bookingId: bookingId 
+    bookingId: bookingId,
+    user : user
   })
   .then((bookData) => {
-    if (bookData.length===0) {
+    if (!bookData) {
       console.log("book=0");
       return res.sendStatus(404); 
     }
@@ -41,7 +42,7 @@ route.post('/addSeats', (req, res) => {
       theater: bookData.theater
     })
     .then((result) => {
-      if (result.length===0) {
+      if (!result) {
         console.log("result=0");
         return res.sendStatus(404); 
       }
