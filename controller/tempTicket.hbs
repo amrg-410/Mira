@@ -100,23 +100,23 @@
     <div class="card">
         <img src="https://raw.githubusercontent.com/balajisadhasivam/Mira/main/Mira.png" alt="" width="100px" height="100px" class="center">
         <h1 class="title">Mira</h1>
-        <h1>Hi <b>Michael</b>,</h1>
+        <h1>Hi <b>Customer</b>,</h1>
         <p class="content">I hope this email finds you well. We are excited to inform you that your ticket has been booked successfully.<br>Here are the details of your booking:</p>
 
         <div class="container">
             <div class="movie-image">
-                <img src={img} alt="Movie Image" width="250" height="300">
+                <img src="{{img}}" alt="Movie Image" width="250" height="300">
             </div>
             <div class="ticket-details">
                 <div class="ticket-info">
                     <h2>Booked Ticket</h2>
                 </div>
-                <h3>Movie: {title}</h3>
-                <h3>Theater: {theater}</h3>
-                <p>Date: {date}</p>
-                <p>Show time: {time}</p>
-                <p>Seats: {seats}</p>
-                <p>Total: ₹{amount}</p>
+                <h3>Movie: {{title}}</h3>
+                <h3>Theater: {{theater}}</h3>
+                <p>Date: {{date}}</p>
+                <p>Show time: {{time}}</p>
+                <p>Seats: {{seats}}</p>
+                <p>Total: ₹{{amount}}</p>
             </div>
         </div>
     </div>
