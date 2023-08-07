@@ -78,24 +78,11 @@ route.post("/fetchBooking",(req,res)=>{
 
 
 route.post('/cancel',(req,res)=>{
-  Booking.findOneAndDelete({
+  Booking.deleteOne({
     bookingId:req.body.bookingId
   })
   .then((result) => {
     console.log("Result : "+result);
-    show.findOne({
-      title: result.title,
-      showDate: result.showDate,
-      showTimes: result.showTime
-    })
-    .then((rlt)=>{
-        rlt.seatAvailability+=result.seats
-        rlt.save()
-    })
-    .catch((error) => {
-      console.error('Error updating seats :', error);
-      res.status(500).json({ error: 'Update seats failed.' });
-    });
     res.sendStatus(200); 
   })
   .catch((error) => {
