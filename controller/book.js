@@ -83,7 +83,7 @@ route.post('/cancel',(req,res)=>{
   })
   .then((result) => {
     console.log("Result : "+result);
-    res.sendStatus(200); 
+    res.send(result); 
   })
   .catch((error) => {
     console.error('Error cancel booking:', error);
