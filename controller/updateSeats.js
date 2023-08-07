@@ -26,7 +26,7 @@ route.post("/updateSeats",(req,res)=>{
 
 
 route.post('/addSeats', (req, res) => {
-  const { bookingId,user } = req.body;
+  const { bookingId } = req.body;
   console.log(bookingId)
   book.findOne({
     bookingId: bookingId
