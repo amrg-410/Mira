@@ -26,17 +26,18 @@ route.post("/updateSeats",(req,res)=>{
 
 
 route.post('/addSeats',(req,res)=>{
-  book.findOne({
+  book.find({
     bookingId:req.body.bookingId
   })
   .then((books)=>{
+    req.body(books);
       shows.findOne({
-        title:books.title,
-        showDate: books.showDate,
-        theater: books.theater
+        title:books[0].title,
+        showDate: books[0].showDate,
+        theater: books[0].theater
       })
       .then((result)=>{
-        result.seatAvailability += books.seats
+        result.seatAvailability += books[0].seats
       })
       .catch(err => {
         console.log(err);
