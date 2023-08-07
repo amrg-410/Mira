@@ -25,33 +25,49 @@ route.post("/updateSeats",(req,res)=>{
 })
 
 
-route.post('/addSeats',(req,res)=>{
-  const {bookingId} = req.body;
+route.post('/addSeats', (req, res) => {
+  const { bookingId } = req.body;
   book.find({
-    bookingId:bookingId 
+    bookingId: bookingId 
   })
-  .then((books)=>{
-    console.log(books);
-      shows.findOne({
-        title:books[0].title,
-        showDate: books[0].showDate,
-        theater: books[0].theater
-      })
-      .then((result)=>{
-        result.seatAvailability += books[0].seats
-        result.save()
-        res.sendStatus(201)
-      })
-      .catch(err => {
-        console.log(err);
-        res.sendStatus(404);
-      });
+  .then((books) => {
+    if (books.length === 0) {
+      return res.sendStatus(404); 
+    }
+
+    const bookData = books[0];
+
+    shows.findOne({
+      title: bookData.title,
+      showDate: bookData.showDate,
+      theater: bookData.theater
+    })
+    .then((result) => {
+      if (!result) {
+        return res.sendStatus(404); 
+      }
+
+      result.seatAvailability += bookData.seats;
+      result.save()
+        .then(() => {
+          res.sendStatus(201); 
+        })
+        .catch(err => {
+          console.log(err);
+          res.sendStatus(500); 
+        });
     })
     .catch(err => {
       console.log(err);
-      res.sendStatus(404);
+      res.sendStatus(500); 
     });
-})
+  })
+  .catch(err => {
+    console.log(err);
+    res.sendStatus(500); 
+  });
+});
+
 
 
 module.exports = route
