@@ -30,12 +30,10 @@ route.post('/addSeats', (req, res) => {
   book.findOne({
     bookingId: bookingId 
   })
-  .then((books) => {
-    if (books.length === 0) {
+  .then((bookData) => {
+    if (!bookData) {
       return res.sendStatus(404); 
     }
-
-    const bookData = books[0];
 
     shows.findOne({
       title: bookData.title,
@@ -67,6 +65,7 @@ route.post('/addSeats', (req, res) => {
     res.sendStatus(500); 
   });
 });
+
 
 
 
