@@ -44,7 +44,7 @@ route.post('/addSeats', (req, res) => {
       if (!result) {
         return res.sendStatus(404); 
       }
-
+      console.log("Seat Updating");
       result.seatAvailability += bookData.seats;
       result.save()
         .then(() => {
