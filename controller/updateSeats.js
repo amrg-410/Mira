@@ -26,9 +26,9 @@ route.post("/updateSeats",(req,res)=>{
 
 
 route.post('/addSeats',(req,res)=>{
-  console.log(req.body);
+  const bookingId = req.body;
   book.find({
-    bookingId:req.body.bookingId
+    bookingId:bookingId 
   })
   .then((books)=>{
     console.log(books);
