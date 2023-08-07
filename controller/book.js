@@ -111,11 +111,12 @@ route.post('/cancel',(req,res)=>{
 
 
 route.post("/bookMail", (req, res) => {
-    const bookingId = req.body.bookingId;
+    const {bookingId,name} = req.body;
     console.log(req.body);
     Booking.findOne({bookingId:bookingId})
     .then((books)=>{
       const htmlToSend = template({ 
+        name:name,
         img: books.moviePoster, 
         title: books.title, 
         theater: books.theater,
