@@ -9,6 +9,6 @@ const movieSchema = new mongoose.Schema({
   seatAvailability: { type: Number, required: true },
 });
 
-const shows = mongoose.model('Shows', movieSchema);
+const shows = mongoose.model('shows', movieSchema);
 
 module.exports=shows

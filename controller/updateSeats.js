@@ -10,7 +10,7 @@ route.post("/updateSeats",(req,res)=>{
     {
       title: title,
       showDate: showDate,
-      theater : theater
+      theater : theater   
     }
   )
   .then((seats)=>{
