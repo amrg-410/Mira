@@ -18,6 +18,7 @@ route.post('/snackBought',(req,res)=>{
     console.log(req.body);
     items.create(req.body);
     console.log("Items Added");
+    res.sendStatus(200);
 })
 
 
