@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <title>OTP</title>
+    <title>Ticket Cancellation Confirmation</title>
     <style>
         html,
         body {
@@ -47,15 +47,7 @@
         margin-top: 20px;
     }
 
-    .otp {
-            text-align: center;
-            color: #F09895;
-            margin-top: 20px;
-            margin-right: 10px;
-        }
-        .gg1 {
-                text-align: center;
-            }    
+
 
     @media (max-width: 768px) {
         .card {
@@ -74,18 +66,9 @@
         <img src="https://raw.githubusercontent.com/balajisadhasivam/Mira/main/Mira.png" alt="" width="100px" height="100px" class="center">
         <h1 class="title">Mira</h1>
         <h1>Hi <b>{{name}}</b>,</h1>
-        <div class="gg1">
-            <p style="font-size: 120%">Welcome to Mira! To ensure your security, we have sent an OTP code to your email. Please enter the code within 5 minutes or go to the login page to resend it.</p>
-        </div>
-        <div class="otp">
-            <h1 style="font-family: arial">Your OTP: <b>{{otp}}</b></h1>
-        </div>
-        <div class="gg1">
-            <p style="font-size: 120%">If you didn't request this, rest assured your account is safe. Please do not share the OTP with anyone. If you have any concerns, contact our support team immediately.</p>
-        </div>
-        <div class="gg1">
-            <p style="font-size: 120%">Thank you for choosing Mira. We're excited to have you on board!</p>
-        </div>
+        <p class="content">We understand that receiving news of a cancelled ticket can be disappointing. We sincerely apologize for any inconvenience this may have caused.</p>
+        <p class="content">Your booked ticket for <b>{{title}}</b> on <b>{{date}}</b> has been cancelled. We will process your refund within <b>2</b> business days, and the refunded amount will be credited to your original payment method.</p>
+        <p class="content">Thank you for your understanding and continued support. We hope to serve you better in the future.</p>
     </div>
 </body>
 </html>

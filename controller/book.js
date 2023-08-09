@@ -95,21 +95,6 @@ route.post("/fetchBooking",(req,res)=>{
 })
 
 
-route.post('/cancel',(req,res)=>{
-  Booking.deleteOne({
-    bookingId:req.body.bookingId
-  })
-  .then((result) => {
-    console.log("Result : "+result);
-    res.send(result); 
-  })
-  .catch((error) => {
-    console.error('Error cancel booking:', error);
-    res.status(500).json({ error: 'Cancelling failed.' });
-  });
-})
-
-
 route.post("/bookMail", (req, res) => {
     const {bookingId,name} = req.body;
     console.log(req.body);

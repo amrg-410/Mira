@@ -51,7 +51,7 @@ route.post('/addSeats', (req, res) => {
       result.seatAvailability += bookData.seats;
       result.save()
         .then(() => {
-          res.sendStatus(201); 
+          res.send(bookData); 
         })
         .catch(err => {
           console.log(err);

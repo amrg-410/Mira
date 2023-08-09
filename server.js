@@ -54,6 +54,11 @@ const snacks=require('./controller/snacks')
 app.use(snacks)
 
 
+// route  to cancel  
+const cancel=require('./controller/cancel')
+app.use(cancel)
+
+
 app.get('/',(req,res)=>{
     res.send("YES")
 })
