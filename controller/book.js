@@ -30,7 +30,7 @@ const generateBookingId = () => {
 };
 
 route.post('/book', (req, res) => {
-  const { title, showDate, theater, showTime, seats, user, paymentId,moviePoster,amount} = req.body;
+  const { title, showDate, theater, showTime, seats, user, paymentId,moviePoster,amount,seatNumber} = req.body;
   console.log(req.body);
   const bookingId = generateBookingId();
   const newBooking = new Booking({
@@ -43,7 +43,8 @@ route.post('/book', (req, res) => {
     user,
     paymentId,
     moviePoster,
-    amount
+    amount,
+    seatNumber
   });
 
   newBooking.save()
@@ -108,7 +109,8 @@ route.post("/bookMail", (req, res) => {
         date: books.showDate,
         time: books.showTime,
         seats: books.seats,
-        amount: books.amount
+        amount: books.amount,
+        seatNumber: books.seatNumber
       });
       const mailOptions = {
           from: 'chatbotmira0@gmail.com',

@@ -11,6 +11,7 @@ const bookingSchema = new mongoose.Schema({
   paymentId:{ type: String, required:true},
   moviePoster:{type: String, required: true},
   amount:{type: Number, required: true},
+  seatNumber:{type: String, required: true}
 });
 
 const Booking = mongoose.model('bookings', bookingSchema);
