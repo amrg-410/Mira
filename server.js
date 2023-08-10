@@ -64,6 +64,11 @@ const review=require('./controller/review')
 app.use(review)
 
 
+// route  to dine  
+const dine=require('./controller/dine')
+app.use(dine)
+
+
 app.get('/',(req,res)=>{
     res.send("YES")
 })
