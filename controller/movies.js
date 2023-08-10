@@ -54,7 +54,7 @@ route.get('/saveTimings',()=>{
         {
           title: "Oppenheimer",
           theater: "AMC Empire 25",
-          showDate: new Date("2023-08-14"),
+          showDate: new Date("2023-08-15"),
           showTimes: "10:00 AM",
           ticketPrice: 150,
           seatAvailability:  33 
@@ -62,7 +62,7 @@ route.get('/saveTimings',()=>{
         {
           title: "Barbie",
           theater: "AMC Empire 25",
-          showDate: new Date("2023-08-14"),
+          showDate: new Date("2023-08-15"),
           showTimes: "02:00 PM",
           ticketPrice: 150,
           seatAvailability:  33 
@@ -70,7 +70,7 @@ route.get('/saveTimings',()=>{
         {
           title: "Blue Beetle",
           theater: "AMC Empire 25",
-          showDate: new Date("2023-08-14"),
+          showDate: new Date("2023-08-15"),
           showTimes: "04:00 PM",
           ticketPrice: 150,
           seatAvailability:  33 
@@ -78,7 +78,7 @@ route.get('/saveTimings',()=>{
         {
           title: "Go West",
           theater: "AMC Empire 25",
-          showDate: new Date("2023-08-14"),
+          showDate: new Date("2023-08-15"),
           showTimes: "08:00 PM",
           ticketPrice: 150,
           seatAvailability:  33 
@@ -86,7 +86,7 @@ route.get('/saveTimings',()=>{
         {
           title: "Oppenheimer",
           theater: "Times Square Theater",
-          showDate: new Date("2023-08-14"),
+          showDate: new Date("2023-08-15"),
           showTimes: "03:30 PM",
           ticketPrice: 250,
           seatAvailability:  33 
@@ -94,7 +94,7 @@ route.get('/saveTimings',()=>{
         {
           title: "Barbie",
           theater: "Times Square Theater",
-          showDate: new Date("2023-08-14"),
+          showDate: new Date("2023-08-15"),
           showTimes: "07:30 PM",
           ticketPrice: 250,
           seatAvailability:  33 
@@ -102,7 +102,7 @@ route.get('/saveTimings',()=>{
         {
           title: "Blue Beetle",
           theater: "Times Square Theater",
-          showDate: new Date("2023-08-14"),
+          showDate: new Date("2023-08-15"),
           showTimes: "10:00 AM",
           ticketPrice: 250,
           seatAvailability:  33 
@@ -110,7 +110,7 @@ route.get('/saveTimings',()=>{
         {
           title: "Go West",
           theater: "Times Square Theater",
-          showDate: new Date("2023-08-14"),
+          showDate: new Date("2023-08-15"),
           showTimes: "01:30 PM",
           ticketPrice: 250,
           seatAvailability:  33 
