@@ -8,6 +8,6 @@ const dineSchema = new mongoose.Schema({
     timeSlot: { type: String, required: true}
 });
 
-const dine = mongoose.model('dines', userSchema);
+const dine = mongoose.model('dines', dineSchema);
 
 module.exports = dine;
