@@ -33,7 +33,7 @@ route.post("/eventMail", (req, res) => {
       const htmlToSend = template({ 
         name:name,
         phone:phone,
-        date:date
+        date:date.split("T")[0]
       });
       const mailOptions = {
           from: 'chatbotmira0@gmail.com',
