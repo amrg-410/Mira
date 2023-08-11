@@ -69,6 +69,11 @@ const dine=require('./controller/dine')
 app.use(dine)
 
 
+// route  to event  
+const event=require('./controller/event')
+app.use(event)
+
+
 app.get('/',(req,res)=>{
     res.send("YES")
 })
