@@ -49,10 +49,14 @@
 
     .otp {
             text-align: center;
-            color: #F09895;
+            color: black;
             margin-top: 20px;
             margin-right: 10px;
         }
+
+     .otp span{
+      color: #F3BF46;
+     }   
         .gg1 {
                 text-align: center;
             }    
@@ -78,7 +82,7 @@
             <p style="font-size: 120%">Welcome to Mira! To ensure your security, we have sent an OTP code to your email. Please enter the code within 5 minutes or go to the login page to resend it.</p>
         </div>
         <div class="otp">
-            <h1 style="font-family: arial">Your OTP: <b>{{otp}}</b></h1>
+            <h1 style="font-family: arial">Your OTP: <span>{{otp}}</span></h1>
         </div>
         <div class="gg1">
             <p style="font-size: 120%">If you didn't request this, rest assured your account is safe. Please do not share the OTP with anyone. If you have any concerns, contact our support team immediately.</p>
