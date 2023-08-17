@@ -24,7 +24,7 @@ route.post('/rating',(req,res)=>{
             let pos =0;
             let neg =0;
             for(var i=0;i<rate.length;i++){
-                if(rate[i]==='Positive'){
+                if(rate[i].review==='Positive'){
                     pos++;
                 }
                 else{
